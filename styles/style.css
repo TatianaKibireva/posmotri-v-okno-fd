@@ -136,7 +136,7 @@ ol {
 .content__video-card {
   display: flex;
   justify-content: flex-start;
-}
+} 
 
 .content__video-card-description-container {
   flex-grow: 1;
