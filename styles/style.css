@@ -62,7 +62,7 @@ ol {
   grid-column-gap: 30px;
   grid-template-areas: 'result content__details';
   align-items: end;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .result {
@@ -288,9 +288,8 @@ ol {
   width: 15px;
   height: 15px;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 1px;
+  left: 1px;
 }
 
 .content__card-link_current {
