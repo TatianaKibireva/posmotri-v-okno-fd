@@ -58,7 +58,6 @@ ol {
   display: grid;
   grid-template-columns: 711px 399px;
   min-width: 1140px;
-  min-height: 534px;
   grid-column-gap: 30px;
   grid-template-areas: 'result content__details';
   align-items: end;
@@ -69,6 +68,7 @@ ol {
   grid-area: result;
   display: flex;
   flex-direction: column;
+  margin-left: 2px; /* Чтобы не скрывалась левая линия рамки текстового поля */
 }
 
 .result__video-container {
@@ -91,7 +91,7 @@ ol {
 
 .content__list-container {
   max-height: 298px;
-  overflow: hidden scroll;
+  overflow-y: auto;
   position: relative;
 }
 
@@ -113,6 +113,7 @@ ol {
   border: 1px solid rgb(255 255 255 / 1);
   min-height: 34px;
   margin-bottom: 3px;
+  font-weight: 700;
 }
 
 .search-form__submit-button {
@@ -122,29 +123,33 @@ ol {
 
 .more-button {
   width: 100%;
-  margin-left: 3px;
+  margin-top: 30px;
 }
 
 .content__details {
   grid-area: content__details;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  row-gap: 26px;
+  row-gap: 18px;
+  margin-bottom: 4px;
 }
 
 .content__video-card {
   display: flex;
   justify-content: flex-start;
-} 
+  margin-top: -10px;
+}
 
 .content__video-card-description-container {
   flex-grow: 1;
+  overflow: hidden;
 }
 
 .content__video-card-thumbnail {
-  min-width: 194px;
-  max-height: 103px;
+  width: 194px;
+  height: 103px;
   object-fit: cover;
   object-position: center;
 }
@@ -152,14 +157,17 @@ ol {
 .content__list {
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 30px;
+  min-height: 103px;
 }
 
 .content__list-item {
   display: flex;
   flex-direction: column;
-  padding-left: 3px;
-  padding-right: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  min-height: 103px;
 }
 
 .search-form__fieldset-title {
@@ -193,17 +201,26 @@ ol {
 .content__card-link {
   text-decoration: none;
   color: rgb(255 255 255 / 1);
+  padding-top: 6px;
 }
 
 .content__video-card-title {
   font-size: 30px;
   font-weight: 700;
-  font-family: Oswald;
+  font-family: Oswald, sans-serif;
   text-transform: uppercase;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .content__video-card-description {
   line-height: 16.2px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
 }
 
 .search-form__checkbox-list {
@@ -213,14 +230,20 @@ ol {
 
 .search-form__textfield {
   min-width: 225px;
-  font-size: 16px;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
   line-height: 21.6px;
-  color: rgb(255 255 255 / 0.7);
+  color: rgb(255 255 255 / 1);
   background-color: transparent;
   border: none;
   border-top: 1px solid rgb(255 255 255 / 1);
   border-bottom: 1px solid rgb(255 255 255 / 1);
   appearance: none;
+}
+
+.search-form__textfield::placeholder {
+  color: rgb(255 255 255 / 0.7);
 }
 
 .search-form__label-text {
@@ -239,7 +262,7 @@ ol {
 
 .search-form__label:has(:focus-visible) {
   outline: 1px solid rgb(255 255 255 / 1);
-  outline-offset: 0;
+  outline-offset: 1px;
 }
 
 .search-form__textfield:hover {
@@ -254,10 +277,14 @@ ol {
 .button:active {
   background: rgb(84 80 80 / 1);
   text-decoration: none;
-  border: none;
+  border: 1px solid rgb(255 255 255 / 1);
 }
 
 .button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
   outline: 1px solid rgb(255 255 255 / 1);
   outline-offset: 1px;
 }
@@ -265,11 +292,6 @@ ol {
 .search-form__label:has(.search-form__pseudo-checkbox):hover {
   text-decoration: underline;
   cursor: pointer;
-}
-
-.search-form__label-text:focus {
-  outline: 1px solid rgb(255 255 255 / 1);
-  outline-offset: 0;
 }
 
 .search-form__pseudo-checkbox {
@@ -295,19 +317,21 @@ ol {
   text-decoration: none;
 }
 
-.content__list-item:hover {
+.content__card-link:active {
+  background: rgb(84 80 80 / 1);
+  text-decoration: none;
+}
+
+.content__card-link:hover {
   text-decoration: underline;
 }
 
-.content__list-item:focus {
+.content__card-link:focus {
   outline: none;
 }
 
-.content__list-item:focus-visible {
+.content__card-link:focus-visible {
   outline: 1px solid rgb(255 255 255 / 1);
-  outline-offset: 0;
+  outline-offset: 3px;
+  overflow: visible;
 }
-
-.content__list-item:nth-child(1n) {
-  padding-top: 3px;
-} 
