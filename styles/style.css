@@ -90,7 +90,7 @@ ol {
 }
 
 .content__list-container {
-  max-height: 298px;
+  height: 298px;
   overflow-y: auto;
   position: relative;
 }
@@ -158,7 +158,6 @@ ol {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  min-height: 103px;
 }
 
 .content__list-item {
@@ -237,7 +236,7 @@ ol {
   color: rgb(255 255 255 / 1);
   background-color: transparent;
   border: none;
-  border-top: 1px solid rgb(255 255 255 / 1);
+  border-top: 1px solid currentColor;
   border-bottom: 1px solid rgb(255 255 255 / 1);
   appearance: none;
 }
@@ -333,5 +332,4 @@ ol {
 .content__card-link:focus-visible {
   outline: 1px solid rgb(255 255 255 / 1);
   outline-offset: 3px;
-  overflow: visible;
 }
